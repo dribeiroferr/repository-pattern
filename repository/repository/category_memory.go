@@ -14,6 +14,10 @@ type CategoryRepositoryMemory struct {
 	db CategoriesMemoryDB
 }
 
+func NewCategoryRepositoryMemory(db CategoriesMemoryDB) *CategoryRepositoryMemory {
+	return &CategoryRepositoryMemory{db: db}
+}
+
 func (c *CategoryRepositoryMemory) Get(id string) (entity.Category, error) {
 	for _, category := range c.db.Categories {
 		if category.ID == id {
